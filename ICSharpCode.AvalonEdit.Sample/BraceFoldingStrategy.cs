@@ -46,8 +46,8 @@ namespace ICSharpCode.AvalonEdit.Sample
 		/// </summary>
 		public BraceFoldingStrategy()
 		{
-			this.OpeningBrace = '{';
-			this.ClosingBrace = '}';
+			this.OpeningBrace = '(';
+			this.ClosingBrace = ')';
 		}
 		
 		public void UpdateFoldings(FoldingManager manager, TextDocument document)
@@ -79,15 +79,21 @@ namespace ICSharpCode.AvalonEdit.Sample
 			char closingBrace = this.ClosingBrace;
 			for (int i = 0; i < document.TextLength; i++) {
 				char c = document.GetCharAt(i);
-				if (c == openingBrace) {
+				if (c == openingBrace)
+				{
 					startOffsets.Push(i);
-				} else if (c == closingBrace && startOffsets.Count > 0) {
+				}
+				else if (c == closingBrace && startOffsets.Count > 0)
+				{
 					int startOffset = startOffsets.Pop();
 					// don't fold if opening and closing brace are on the same line
-					if (startOffset < lastNewLineOffset) {
+					if (startOffset < lastNewLineOffset)
+					{
 						newFoldings.Add(new NewFolding(startOffset, i + 1));
 					}
-				} else if (c == '\n' || c == '\r') {
+				}
+				else if (c == '\n' || c == '\r')
+				{
 					lastNewLineOffset = i + 1;
 				}
 			}

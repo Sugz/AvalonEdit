@@ -69,8 +69,9 @@
 				Name="textEditor"
 				FontFamily="Consolas"
 				FontSize="10pt"
+				ShowLineNumbers="True"
 				SyntaxHighlighting="C#"
-			>Welcome to AvalonEdit!
+								   Background="White">Welcome to AvalonEdit!
 			</avalonEdit:TextEditor>
 			<GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Left"/>
 			<DockPanel Grid.Column="1" Margin="4 0 0 0">

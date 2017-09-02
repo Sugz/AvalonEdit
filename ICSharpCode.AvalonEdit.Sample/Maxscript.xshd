@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<SyntaxDefinition name="Custom Highlighting" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+<SyntaxDefinition name="Maxscript" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<Color name="Comment" foreground="#FF7D7D7D" />
 	<Color name="String" foreground="#FFFF9999" />
 	
@@ -22,10 +22,7 @@
 			<Word>else</Word>
 			<!-- ... -->
 		</Keywords>
-		
-		<Keywords fontWeight="bold" fontStyle="italic" foreground="Red">
-			<Word>AvalonEdit</Word>
-		</Keywords>
+    
 		
 		<!-- Digits -->
 		<Rule foreground="#FFFF9053">
@@ -36,5 +33,6 @@
             )
             ([eE][+-]?[0-9]+)? # optional exponent
         </Rule>
+    
 	</RuleSet>
 </SyntaxDefinition>

@@ -174,7 +174,7 @@ namespace ICSharpCode.AvalonEdit.Sample
 						break;
 					default:
 						textEditor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.DefaultIndentationStrategy();
-						foldingStrategy = null;
+						foldingStrategy = new BraceFoldingStrategy();
 						break;
 				}
 			}

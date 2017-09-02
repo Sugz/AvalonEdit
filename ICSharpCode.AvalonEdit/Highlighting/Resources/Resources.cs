@@ -54,10 +54,10 @@ namespace ICSharpCode.AvalonEdit.Highlighting
 			hlm.RegisterHighlighting("TSQL", new[] { ".sql" }, "TSQL-Mode.xshd");
 			hlm.RegisterHighlighting("VB", new[] { ".vb" }, "VB-Mode.xshd");
 			hlm.RegisterHighlighting("XML", (".xml;.xsl;.xslt;.xsd;.manifest;.config;.addin;" +
-			                                 ".xshd;.wxs;.wxi;.wxl;.proj;.csproj;.vbproj;.ilproj;" +
-			                                 ".booproj;.build;.xfrm;.targets;.xaml;.xpt;" +
-			                                 ".xft;.map;.wsdl;.disco;.ps1xml;.nuspec").Split(';'),
-			                         "XML-Mode.xshd");
+											 ".xshd;.wxs;.wxi;.wxl;.proj;.csproj;.vbproj;.ilproj;" +
+											 ".booproj;.build;.xfrm;.targets;.xaml;.xpt;" +
+											 ".xft;.map;.wsdl;.disco;.ps1xml;.nuspec").Split(';'),
+									 "XML-Mode.xshd");
 			hlm.RegisterHighlighting("MarkDown", new[] { ".md" }, "MarkDown-Mode.xshd");
 		}
 	}

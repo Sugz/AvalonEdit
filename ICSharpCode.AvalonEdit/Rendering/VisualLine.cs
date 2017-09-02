@@ -740,6 +740,8 @@ namespace ICSharpCode.AvalonEdit.Rendering
 		}
 	}
 	
+
+
 	sealed class VisualLineDrawingVisual : DrawingVisual
 	{
 		public readonly VisualLine VisualLine;

@@ -487,21 +487,27 @@ namespace ICSharpCode.AvalonEdit
 		{
 			TextEditor editor = (TextEditor)d;
 			var leftMargins = editor.TextArea.LeftMargins;
-			if ((bool)e.NewValue) {
+			if ((bool)e.NewValue)
+			{
 				LineNumberMargin lineNumbers = new LineNumberMargin();
-				Line line = (Line)DottedLineMargin.Create();
+				//Line line = (Line)DottedLineMargin.Create();
 				leftMargins.Insert(0, lineNumbers);
-				leftMargins.Insert(1, line);
+				//leftMargins.Insert(1, line);
 				var lineNumbersForeground = new Binding("LineNumbersForeground") { Source = editor };
-				line.SetBinding(Line.StrokeProperty, lineNumbersForeground);
+				//line.SetBinding(Line.StrokeProperty, lineNumbersForeground);
 				lineNumbers.SetBinding(Control.ForegroundProperty, lineNumbersForeground);
-			} else {
-				for (int i = 0; i < leftMargins.Count; i++) {
-					if (leftMargins[i] is LineNumberMargin) {
+			}
+			else
+			{
+				for (int i = 0; i < leftMargins.Count; i++)
+				{
+					if (leftMargins[i] is LineNumberMargin)
+					{
 						leftMargins.RemoveAt(i);
-						if (i < leftMargins.Count && DottedLineMargin.IsDottedLineMargin(leftMargins[i])) {
-							leftMargins.RemoveAt(i);
-						}
+						//if (i < leftMargins.Count && DottedLineMargin.IsDottedLineMargin(leftMargins[i]))
+						//{
+						//	leftMargins.RemoveAt(i);
+						//}
 						break;
 					}
 				}

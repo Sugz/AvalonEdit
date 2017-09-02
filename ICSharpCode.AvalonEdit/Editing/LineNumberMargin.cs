@@ -41,6 +41,13 @@ namespace ICSharpCode.AvalonEdit.Editing
 			DefaultStyleKeyProperty.OverrideMetadata(typeof(LineNumberMargin),
 			                                         new FrameworkPropertyMetadata(typeof(LineNumberMargin)));
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public LineNumberMargin()
+		{
+			Margin = new Thickness(10, 0, 5, 0);
+		}
 		
 		TextArea textArea;
 		
