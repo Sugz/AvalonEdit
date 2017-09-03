@@ -130,7 +130,15 @@ namespace ICSharpCode.AvalonEdit.Folding
 		public FoldingMargin()
 		{
 			Margin = new Thickness(0, 0, 5, 0);
+			MouseEnter += FoldingMargin_MouseEnter;
 		}
+
+		private void FoldingMargin_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+
 
 		/// <inheritdoc/>
 		protected override Size MeasureOverride(Size availableSize)

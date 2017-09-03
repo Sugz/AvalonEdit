@@ -436,6 +436,9 @@
       <DependentUpon>DropDownButton.cs</DependentUpon>
     </Page>
     <Page Include="TextEditor.xaml" />
+    <Page Include="themes\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="themes\generic.xaml" />
   </ItemGroup>
   <ItemGroup>

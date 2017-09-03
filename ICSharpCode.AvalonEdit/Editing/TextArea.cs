@@ -70,10 +70,8 @@ namespace ICSharpCode.AvalonEdit.Editing
 		/// </summary>
 		protected TextArea(TextView textView)
 		{
-			if (textView == null)
-				throw new ArgumentNullException("textView");
-			this.textView = textView;
-			this.Options = textView.Options;
+			this.textView = textView ?? throw new ArgumentNullException("textView");
+			Options = textView.Options;
 			
 			selection = emptySelection = new EmptySelection(this);
 			
@@ -89,9 +87,9 @@ namespace ICSharpCode.AvalonEdit.Editing
 			ime = new ImeSupport(this);
 			
 			leftMargins.CollectionChanged += leftMargins_CollectionChanged;
-			
-			this.DefaultInputHandler = new TextAreaDefaultInputHandler(this);
-			this.ActiveInputHandler = this.DefaultInputHandler;
+
+			DefaultInputHandler = new TextAreaDefaultInputHandler(this);
+			ActiveInputHandler = DefaultInputHandler;
 		}
 		#endregion
 		
