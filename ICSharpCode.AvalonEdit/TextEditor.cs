@@ -296,27 +296,22 @@ namespace ICSharpCode.AvalonEdit
 		{
 			base.OnApplyTemplate();
 			scrollViewer = (ScrollViewer)Template.FindName("PART_ScrollViewer", this);
+			scrollViewer.ApplyTemplate();
+			textArea.ApplyTemplate();
+			if (scrollViewer.Template.FindName("PART_HorizontalScrollBar", scrollViewer) is ScrollBar horizontalScrollBar)
+				textArea.LeftMarginsPanel.SizeChanged += (s, e) => horizontalScrollBar.Margin = new Thickness(textArea.LeftMarginsPanel.ActualWidth, 0, 0, 0);
 		}
 
 		/// <summary>
 		/// Gets the text area.
 		/// </summary>
-		public TextArea TextArea
-		{
-			get
-			{
-				return textArea;
-			}
-		}
+		public TextArea TextArea => textArea;
 
 		/// <summary>
 		/// Gets the scroll viewer used by the text editor.
 		/// This property can return null if the template has not been applied / does not contain a scroll viewer.
 		/// </summary>
-		internal ScrollViewer ScrollViewer
-		{
-			get { return scrollViewer; }
-		}
+		internal ScrollViewer ScrollViewer => scrollViewer;
 
 		bool CanExecute(RoutedUICommand command)
 		{

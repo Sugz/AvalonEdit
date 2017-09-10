@@ -12,5 +12,6 @@
 	
 	<Style TargetType="{x:Type editing:LineNumberMargin}">
 		<Setter Property="Control.Cursor" Value="/ICSharpCode.AvalonEdit;component/themes/RightArrow.cur"/>
+		<!--<Setter Property="Cursor" Value="UpArrow" />-->
 	</Style>
 </ResourceDictionary>

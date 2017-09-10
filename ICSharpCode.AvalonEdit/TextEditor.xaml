@@ -7,6 +7,7 @@
 		<ResourceDictionary Source="/ICSharpCode.AvalonEdit;component/themes/ScrollViewer.xaml" />
 	</ResourceDictionary.MergedDictionaries>
 
+
 	<Style TargetType="{x:Type AvalonEdit:TextEditor}">
 		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
 		<Setter Property="Background" Value="Transparent" />
@@ -26,8 +27,8 @@
 									  Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
 									  VerticalContentAlignment="Top"
 									  HorizontalContentAlignment="Left"
-									  Padding="{TemplateBinding Padding}" 
-									  Template="{StaticResource ScrollViewerControlTemplate}"/>
+									  Padding="{TemplateBinding Padding}"
+									  Template="{StaticResource ScrollViewerControlTemplate}" />
 					</Border>
 					<ControlTemplate.Triggers>
 						<Trigger Property="WordWrap"
@@ -62,12 +63,14 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type editing:TextArea}">
 					<DockPanel Focusable="False">
-						<ItemsControl DockPanel.Dock="Left"
+						<ItemsControl x:Name="LeftMarginsPanel" 
+									  DockPanel.Dock="Left"
 									  Focusable="False"
 									  ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=LeftMargins}">
 							<ItemsControl.ItemsPanel>
 								<ItemsPanelTemplate>
-									<StackPanel Orientation="Horizontal" />
+									<StackPanel Orientation="Horizontal"
+                                                Background="Transparent" />
 								</ItemsPanelTemplate>
 							</ItemsControl.ItemsPanel>
 						</ItemsControl>
@@ -79,4 +82,10 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	
+	
+	
+	
+	
+	
 </ResourceDictionary>

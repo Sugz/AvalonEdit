@@ -81,7 +81,7 @@ namespace ICSharpCode.AvalonEdit.Folding
 			if (foldingManager != null) {
 				if (!foldingManager.textViews.Contains(context.TextView))
 					throw new ArgumentException("Invalid TextView");
-				if (context.Document != foldingManager.document)
+                if (context.Document != foldingManager.document)
 					throw new ArgumentException("Invalid document");
 			}
 		}

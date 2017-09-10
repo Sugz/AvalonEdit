@@ -361,22 +361,26 @@ namespace ICSharpCode.AvalonEdit.Editing
 			}
 		}
 		#endregion
-		
+
 		#region TextView property
+		ItemsControl leftMarginsPanel;
 		readonly TextView textView;
 		IScrollInfo scrollInfo;
 
 		/// <summary>
 		/// Gets the text view used to display text in this text area.
 		/// </summary>
-		public TextView TextView {
-			get {
-				return textView;
-			}
-		}
+		public TextView TextView => textView;
+
+		/// <summary>
+		/// Get the LeftMargin ItemsControl
+		/// </summary>
+		public ItemsControl LeftMarginsPanel => leftMarginsPanel;
+
 		/// <inheritdoc/>
 		public override void OnApplyTemplate()
 		{
+			leftMarginsPanel = (ItemsControl)Template.FindName("LeftMarginsPanel", this);
 			base.OnApplyTemplate();
 			scrollInfo = textView;
 			ApplyScrollInfo();
@@ -621,6 +625,9 @@ namespace ICSharpCode.AvalonEdit.Editing
 				CommandManager.InvalidateRequerySuggested(); // the read-only status effects Paste.CanExecute and the IME
 			}
 		}
+
+
+
 		#endregion
 		
 		#region IScrollInfo implementation

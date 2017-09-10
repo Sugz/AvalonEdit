@@ -27,6 +27,7 @@ using System.Windows.Media.TextFormatting;
 using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit.Rendering;
 using ICSharpCode.AvalonEdit.Utils;
+using System.Windows.Media.Animation;
 
 namespace ICSharpCode.AvalonEdit.Folding
 {
@@ -130,12 +131,23 @@ namespace ICSharpCode.AvalonEdit.Folding
 		public FoldingMargin()
 		{
 			Margin = new Thickness(0, 0, 5, 0);
+			Opacity = 0;
 			MouseEnter += FoldingMargin_MouseEnter;
+			MouseLeave += FoldingMargin_MouseLeave;
 		}
+
+		
 
 		private void FoldingMargin_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
 		{
-			throw new NotImplementedException();
+			DoubleAnimation opacityAnimation = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(100));
+			BeginAnimation(OpacityProperty, opacityAnimation);
+		}
+
+		private void FoldingMargin_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			DoubleAnimation opacityAnimation = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(500));
+			BeginAnimation(OpacityProperty, opacityAnimation);
 		}
 
 
@@ -183,6 +195,7 @@ namespace ICSharpCode.AvalonEdit.Folding
 		}
 
 		List<FoldingMarginMarker> markers = new List<FoldingMarginMarker>();
+
 
 		void TextViewVisualLinesChanged(object sender, EventArgs e)
 		{
@@ -251,13 +264,16 @@ namespace ICSharpCode.AvalonEdit.Folding
 			if (TextView.VisualLines.Count == 0 || FoldingManager == null)
 				return;
 
-			var allTextLines = TextView.VisualLines.SelectMany(vl => vl.TextLines).ToList();
-			Pen[] colors = new Pen[allTextLines.Count + 1];
-			Pen[] endMarker = new Pen[allTextLines.Count];
+			//Draw a transparent background to mouse detection
+			drawingContext.DrawRectangle(Brushes.Transparent, null, new Rect(RenderSize));
 
-			CalculateFoldLinesForFoldingsActiveAtStart(allTextLines, colors, endMarker);
-			CalculateFoldLinesForMarkers(allTextLines, colors, endMarker);
-			DrawFoldLines(drawingContext, colors, endMarker);
+			//var allTextLines = TextView.VisualLines.SelectMany(vl => vl.TextLines).ToList();
+			//Pen[] colors = new Pen[allTextLines.Count + 1];
+			//Pen[] endMarker = new Pen[allTextLines.Count];
+
+			//CalculateFoldLinesForFoldingsActiveAtStart(allTextLines, colors, endMarker);
+			//CalculateFoldLinesForMarkers(allTextLines, colors, endMarker);
+			//DrawFoldLines(drawingContext, colors, endMarker);
 
 			base.OnRender(drawingContext);
 		}
